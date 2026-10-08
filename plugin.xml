@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-ultimate-secure-storage"
+        version="4.0.0">
+
+    <name>UltraSecureStorage</name>
+    <description>TransferChain secure storage with Keychain/Keystore, biometric protection, and native session locking.</description>
+    <license>MIT</license>
+    <keywords>cordova,secure-storage,keychain,keystore,biometric,session,transferchain</keywords>
+
+    <js-module src="www/UltraSecureStorage.js" name="UltraSecureStorage">
+        <clobbers target="UltraSecureStorage" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="UltraSecureStorage">
+                <param name="android-package"
+                       value="com.transferchain.securestorage.UltraSecureStorage" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <source-file
+            src="src/android/UltraSecureStorage.java"
+            target-dir="src/com/transferchain/securestorage" />
+
+        <framework src="androidx.biometric:biometric:1.1.0" />
+    </platform>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="UltraSecureStorage">
+                <param name="ios-package" value="UltraSecureStorage" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="NSFaceIDUsageDescription">
+            <string>Authenticate to unlock protected secure data.</string>
+        </config-file>
+
+        <source-file src="src/ios/UltraSecureStorage.swift" />
+        <framework src="Security.framework" />
+        <framework src="LocalAuthentication.framework" />
+    </platform>
+</plugin>

@@ -1,0 +1,22 @@
+{
+  "name": "cordova-plugin-ultimate-secure-storage",
+  "version": "4.0.0",
+  "description": "TransferChain secure storage using Android Keystore and Apple Keychain, with biometric protection and native session locking.",
+  "keywords": [
+    "biometric",
+    "cordova",
+    "keychain",
+    "keystore",
+    "secure-storage",
+    "session",
+    "transferchain"
+  ],
+  "license": "MIT",
+  "cordova": {
+    "id": "cordova-plugin-ultimate-secure-storage",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  }
+}
